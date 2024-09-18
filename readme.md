@@ -10,7 +10,7 @@ same url resource by mocking responses based on request number on the same path.
 
 ## Demo
 
-![documentation_resources/demo.gif](documentation_resources/banner.jpg)
+![documentation_resources/demo.gif](documentation_resources/demo.gif)
 
 ---
 
