@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<file src="/js/reload.js" interval="false"></file>
+<file-poll interval="2000" src="/logData.js" eventName="logData"></file-poll>
+<file src="/js/createHttpServerLogger.component.js"></file>
+<file src="/js/counterReset.component.js"></file>
+<file src="/js/httpServerHandlerLogger.component.js"></file>
+<file src="/js/request.component.js"></file>
+<file src="/js/response.component.js"></file>
+<file src="/js/httpRequestHandlerLogger.component.js"></file>
+<file src="/js/graphqlRequestHandlerLogger.component.js"></file>
+<file src="/js/proxyResourceToPayloadLogger.component.js"></file>
+<file src="/js/httpResourceToPayloadLogger.component.js"></file>
+<file src="/js/forwardResourceToPayloadLogger.component.js"></file>
+<file src="/js/log-index-root.component.js"></file>
+<file src="/js/chapter.component.js"></file>
+<style>
+    body {
+        margin: 0;
+    }
+
+    pre {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    section-start {
+        display: block;
+        font-size: 18px;
+        line-height: 25px;
+        border: solid lightgray;
+        border-width: 1px 0px 0px 0px;
+        padding-top: 5px;
+        padding-left: 10px;
+        padding-bottom: 5px;
+    }
+</style>
+<div style="">
+    <div style="
+        position:fixed;
+        top:0;
+        left:0;
+        background-color:white;
+        min-width: 200px;
+        max-width: 200px;
+        height: 100%;
+        overflow-x: scroll;
+        border-right: 1px solid lightgray
+">
+        <log-index-root></log-index-root>
+    </div>
+</div>
+<div style="padding-left:201px;">
+    <div class="layout" style=" font-family: monospace; ">
+    </div>
+</div>
+
+</div>
+</body>
+<script>
+    window.updateTextContent = (node, value) => {
+        if (node?.textContent !== (value ?? "")) {
+            node.textContent = value ?? "";
+        }
+    }
+    window.updateNodeTag = (tag, node, parent) => {
+        if (node.tagName.toLowerCase() !== tag) {
+            const newNode = document.createElement(tag);
+            parent.replaceChild(newNode, node);
+            return newNode;
+        }
+        return node;
+    }
+    document.addEventListener("logData", ({detail}) => {
+        const nodeTag = detail._type.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
+        let node = document.querySelector(nodeTag)
+        if (!node) {
+            node = document.createElement(nodeTag);
+            document.querySelector(".layout").appendChild(node)
+        }
+        node.update(detail);
+    });
+</script>
+<script>
+    let loc = String(document.location).split("#")[0].split("/");
+    loc.pop();
+    loc = loc.join("/");
+    document.querySelectorAll("file").forEach(element => {
+        const node = document.createElement("script");
+        [...element.attributes].forEach(e => node.setAttribute(e.nodeName, e.value))
+        node.setAttribute("src", loc + element.getAttribute("src"))
+        document.querySelector("head").appendChild(node)
+    })
+    document.querySelectorAll("file-poll").forEach(element => {
+        const interval = element.getAttribute("interval") || Number.MAX_SAFE_INTEGER;
+        const appendElement = () => {
+            const node = document.createElement("script");
+            [...element.attributes].forEach(e => node.setAttribute(e.nodeName, e.value))
+            node.setAttribute("src", loc + element.getAttribute("src"));
+            node.onload = () => {
+                setTimeout(() => document.querySelector("head").removeChild(node), interval)
+            };
+            document.querySelector("head").appendChild(node);
+        }
+        appendElement();
+        setInterval(() => appendElement(), interval);
+    })
+</script>
+</html>

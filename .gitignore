@@ -1,0 +1,30 @@
+/app/dist
+/app/coverage
+/app/node_modules
+
+# Package-lock
+/app/package-lock.json
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# VS Code is the projects recommended IDE, allow some files for easier setup
+.vscode/*
+!.vscode/launch.json
+!.vscode/README.md
+!.vscode/settings.json
+
+# Other dev env meta dirs and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+/.vs

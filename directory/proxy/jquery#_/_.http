@@ -1,0 +1,4 @@
+PROXY https://jquery.com/
+
+RESPONSE
+origin: http://localhost:8081

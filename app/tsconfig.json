@@ -1,0 +1,16 @@
+{
+  "files": [
+    "./custom.d.ts",
+    "./src/app.ts"
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "target": "ES6",
+    "allowJs": true,
+    "downlevelIteration": true,
+  },
+}

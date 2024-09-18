@@ -1,0 +1,9 @@
+PROXY https://motherfuckingwebsite.com/
+
+REQUEST
+requestHeader1:value1
+requestHeader2:value2
+
+RESPONSE
+header1:value1
+header2:value2

@@ -1,0 +1,10 @@
+#!/bin/bash
+echo -n "
+HTTP/1.1 200
+header1:value1
+header2:value2
+
+<html>
+    <head/>
+    <body/>
+</html>"

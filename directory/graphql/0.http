@@ -1,0 +1,49 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+access-control-allow-credentials: true
+access-control-allow-origin: http://localhost:8080
+connection: keep-alive
+date: Tue, 08 Feb 2022 19:15:51 GMT
+etag: W/"1f1-aPJ5uoFURG7QbNhQfWNfitDwiNM"
+server: nginx/1.17.10
+
+{
+  "data": { "spots": { "items": [{
+      "id": "id",
+      "metrics": {
+          "name":"metric name",
+          "points":{
+              "time":"time",
+              "continuous":"10.0"
+          }
+      }
+  }], "__typename": "SpotCollection" } },
+  "extensions": {
+    "tracing": {
+      "version": 1,
+      "startTime": "2022-02-08T19:15:51.018Z",
+      "endTime": "2022-02-08T19:15:51.026Z",
+      "duration": 7153990,
+      "execution": {
+        "resolvers": [
+          {
+            "path": ["spots"],
+            "parentType": "Query",
+            "fieldName": "spots",
+            "returnType": "SpotCollection!",
+            "startOffset": 286924,
+            "duration": 2369731
+          },
+          {
+            "path": ["spots", "items"],
+            "parentType": "SpotCollection",
+            "fieldName": "items",
+            "returnType": "[Spot!]!",
+            "startOffset": 2703574,
+            "duration": 4407514
+          }
+        ]
+      }
+    }
+  }
+}
