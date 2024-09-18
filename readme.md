@@ -1,4 +1,4 @@
-![image](https://bitbucket.esolutions.ro/users/alexandru.crihan/repos/das-micro-server/raw/documentation_resources/banner.jpg)
+![documentation_resources/banner.jpg](blob:https://github.com/b30288db-d316-4769-94ed-a4a4c5d9f148)
 
 ---
 
@@ -10,7 +10,7 @@ same url resource by mocking responses based on request number on the same path.
 
 ## Demo
 
-![image](https://bitbucket.esolutions.ro/users/alexandru.crihan/repos/das-micro-server/raw/documentation_resources/demo.gif)
+![documentation_resources/demo.gif](blob:https://github.com/23722470-4e12-4d8e-b0dc-2d785756b520)
 
 ---
 
